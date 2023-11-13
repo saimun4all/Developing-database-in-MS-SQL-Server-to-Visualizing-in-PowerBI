@@ -6,7 +6,7 @@ SELECT * FROM dbo.['2019$']
 UNION
 SELECT * FROM dbo.['2020$']
 
------------* Find out Total Revenue Breakdown Year-wise *------------
+-----------* Find out Total Revenue Breakdown by Hotel type and Year-wise *------------
 WITH hotels AS (
 	SELECT * FROM dbo.['2018$']
 UNION
@@ -16,7 +16,8 @@ SELECT * FROM dbo.['2020$'])
 
 SELECT
 arrival_date_year,
+hotel,
 SUM((stays_in_weekend_nights + stays_in_week_nights)*adr)
 AS Revenue
 FROM hotels
-GROUP BY arrival_date_year
+GROUP BY arrival_date_year, hotel
