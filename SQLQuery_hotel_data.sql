@@ -25,14 +25,14 @@ GROUP BY arrival_date_year, hotel
 
 -----------* Find out Total Revenue Breakdown by Hotel type and Year-wise *------------
 WITH hotels AS (
-	SELECT * FROM dbo.['2018$']
+	SELECT * FROM [Hotel Project].dbo.['2018$']
 UNION
-SELECT * FROM dbo.['2019$']
+SELECT * FROM [Hotel Project].dbo.['2019$']
 UNION
-SELECT * FROM dbo.['2020$'])
+SELECT * FROM [Hotel Project].dbo.['2020$'])
 SELECT * FROM 
  hotels
- LEFT JOIN dbo.market_segment$
- ON hotels.market_segment = dbo.market_segment$.market_segment
- LEFT JOIN dbo.meal_cost$
+ LEFT JOIN [Hotel Project].dbo.market_segment$
+ ON hotels.market_segment = market_segment$.market_segment
+ LEFT JOIN [Hotel Project].dbo.meal_cost$
  ON meal_cost$.meal = hotels.meal
